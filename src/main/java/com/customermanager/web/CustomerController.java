@@ -43,14 +43,14 @@ public class CustomerController {
     }
 
     @GetMapping("/update-form")
-    public String updateCxInfo(@RequestParam("cxid") Integer id, Model model) {
+    public String updateCxInfo(@RequestParam("customerId") Integer id, Model model) {
         Customer cx = service.fetchCustomerById(id);
         model.addAttribute("customer", cx);
-        return "updateform";
+        return "showform";
     }
 
     @GetMapping("/delete-data")
-    public String deleteCxInfo(@RequestParam("cxid") Integer id) {
+    public String deleteCxInfo(@RequestParam("customerId") Integer id) {
         service.deleteCustomer(id);
         return "redirect:/customer-info";
     }
