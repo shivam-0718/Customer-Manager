@@ -6,8 +6,257 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			margin: 0;
+			padding: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.container {
+			max-width: 600px;
+			width: 100%;
+			background: rgba(255,255,255,0.95);
+			border-radius: 20px;
+			padding: 50px;
+			box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+			backdrop-filter: blur(10px);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.container::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 5px;
+			background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+			background-size: 200% 100%;
+			animation: shimmer 3s infinite;
+		}
+
+		@keyframes shimmer {
+			0% { background-position: 200% 0; }
+			100% { background-position: -200% 0; }
+		}
+
+		h3 {
+			color: #2c3e50;
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-bottom: 10px;
+			text-align: center;
+			position: relative;
+		}
+
+		h3::after {
+			content: '';
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 4px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			border-radius: 2px;
+		}
+
+		hr {
+			border: none;
+			height: 1px;
+			background: linear-gradient(90deg, transparent, #ddd, transparent);
+			margin: 30px 0;
+		}
+
+		.h4 {
+			color: #34495e;
+			font-weight: 600;
+			margin-bottom: 30px;
+			text-align: center;
+			font-size: 1.3rem;
+			opacity: 0.8;
+		}
+
+		.form-group {
+			position: relative;
+			margin-bottom: 30px;
+		}
+
+		.form-control {
+			width: 100%;
+			padding: 16px 20px;
+			border: 2px solid #e9ecef;
+			border-radius: 12px;
+			font-size: 16px;
+			background: rgba(255,255,255,0.9);
+			transition: all 0.3s ease;
+			outline: none;
+			color: #2c3e50;
+		}
+
+		.form-control:focus {
+			border-color: #667eea;
+			box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+			background: white;
+			transform: translateY(-2px);
+		}
+
+		.form-control::placeholder {
+			color: #95a5a6;
+			font-weight: 400;
+		}
+
+		/* Floating label effect */
+		.form-group label {
+			position: absolute;
+			top: 16px;
+			left: 20px;
+			color: #95a5a6;
+			font-size: 16px;
+			transition: all 0.3s ease;
+			pointer-events: none;
+			background: white;
+			padding: 0 5px;
+		}
+
+		.form-control:focus + label,
+		.form-control:not(:placeholder-shown) + label {
+			top: -8px;
+			left: 15px;
+			font-size: 12px;
+			color: #667eea;
+			font-weight: 600;
+		}
+
+		.btn {
+			font-weight: 600;
+			border-radius: 12px;
+			transition: all 0.3s ease;
+			border: none;
+			cursor: pointer;
+			text-decoration: none;
+			display: inline-block;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.btn::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+			transition: left 0.5s;
+		}
+
+		.btn:hover::before {
+			left: 100%;
+		}
+
+		.btn-info {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			padding: 16px 40px;
+			font-size: 16px;
+			width: 100%;
+			margin-top: 20px;
+			box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+		}
+
+		.btn-info:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+			color: white;
+		}
+
+		.btn-info:active {
+			transform: translateY(-1px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+		}
+
+		/* Form animation */
+		form {
+			animation: slideUp 0.6s ease-out;
+		}
+
+		@keyframes slideUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Input focus animation */
+		.form-control {
+			position: relative;
+		}
+
+		.form-group::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			transition: width 0.3s ease;
+		}
+
+		.form-group:focus-within::after {
+			width: 100%;
+		}
+
+		/* Responsive design */
+		@media (max-width: 768px) {
+			.container {
+				margin: 10px;
+				padding: 30px 25px;
+			}
+
+			h3 {
+				font-size: 2rem;
+			}
+
+			.form-control {
+				padding: 14px 16px;
+				font-size: 15px;
+			}
+
+			.btn-info {
+				padding: 14px 30px;
+				font-size: 15px;
+			}
+		}
+
+		/* Success state for form completion */
+		.form-success {
+			background: linear-gradient(135deg, #2ecc71, #27ae60);
+			color: white;
+			padding: 15px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			text-align: center;
+			display: none;
+		}
+	</style>
 
 	<title>Save Customer</title>
 </head>
@@ -19,7 +268,7 @@
 	<h3>Customer Information</h3>
 	<hr>
 
-	<p class="h4 mb-4">Save Customer Info</p>
+	<p class="h4">Save Customer Info</p>
 
 	<form action="#" th:action="@{/register-customer}"
 		  th:object="${customer}" method="POST">
@@ -27,19 +276,25 @@
 		<!-- Add hidden form field to handle update -->
 		<input type="hidden" th:field="*{id}" />
 
-		<input type="text" th:field="*{firstName}"
-			   class="form-control mb-4 col-4" placeholder="First Name">
+		<div class="form-group">
+			<input type="text" th:field="*{firstName}"
+				   class="form-control" placeholder="First Name" required>
+		</div>
 
-		<input type="text" th:field="*{lastName}"
-			   class="form-control mb-4 col-4" placeholder="Last Name">
+		<div class="form-group">
+			<input type="text" th:field="*{lastName}"
+				   class="form-control" placeholder="Last Name" required>
+		</div>
 
-		<input type="text" th:field="*{city}"
-			   class="form-control mb-4 col-4" placeholder="City">
+		<div class="form-group">
+			<input type="text" th:field="*{city}"
+				   class="form-control" placeholder="City" required>
+		</div>
 
-		<button type="submit" class="btn btn-info col-2">Save</button>
+		<button type="submit" class="btn btn-info">Save Customer</button>
 
 	</form>
 
-
 </div>
 </body>
+</html>
