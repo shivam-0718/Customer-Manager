@@ -21,7 +21,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer-info")
-    public String getCxData(Model model) {
+    public String getCustomerData(Model model) {
         System.out.println("Fetching customer data..."); //for debugging purposes
         List<Customer> customers = service.getCustomerInfo();
         model.addAttribute("customers", customers);
@@ -30,7 +30,7 @@ public class CustomerController {
     }
 
     @PostMapping("/register-customer")
-    public String registerCx(@ModelAttribute("customer") Customer customer, Model model) {
+    public String registerCustomer(@ModelAttribute("customer") Customer customer, Model model) {
         System.out.println("Registering customer: " + customer); //for debugging purposes
         service.registerCustomer(customer);
         return "redirect:/customer-info";
@@ -43,14 +43,14 @@ public class CustomerController {
     }
 
     @GetMapping("/update-form")
-    public String updateCxInfo(@RequestParam("customerId") Integer id, Model model) {
+    public String updateCustomerInfo(@RequestParam("customerId") Integer id, Model model) {
         Customer cx = service.fetchCustomerById(id);
         model.addAttribute("customer", cx);
         return "showform";
     }
 
     @GetMapping("/delete-data")
-    public String deleteCxInfo(@RequestParam("customerId") Integer id) {
+    public String deleteCustomerInfo(@RequestParam("customerId") Integer id) {
         service.deleteCustomer(id);
         return "redirect:/customer-info";
     }
