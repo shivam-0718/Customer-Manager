@@ -9,10 +9,9 @@
 
 	<style>
 		:root {
-			/* Color Palette */
-			--primary-color: #4a90e2; /* A modern blue */
+			--primary-color: #4a90e2;
 			--primary-dark: #3a7bd5;
-			--secondary-color: #50e3c2; /* A vibrant accent */
+			--secondary-color: #50e3c2;
 			--text-dark: #333;
 			--text-light: #555;
 			--background-light: #f5f7fa;
@@ -20,32 +19,20 @@
 			--border-color: #e0e6ed;
 			--shadow-light: rgba(0, 0, 0, 0.08);
 			--shadow-medium: rgba(0, 0, 0, 0.12);
-
-			/* --- ADDED THESE MISSING VARIABLES --- */
-			--primary-color-shadow-light: rgba(74, 144, 226, 0.2); /* Shadow based on primary-color */
-			--primary-color-shadow-medium: rgba(74, 144, 226, 0.4); /* Stronger shadow based on primary-color */
-			/* ------------------------------------ */
-
-			/* Typography */
+			--primary-color-shadow-light: rgba(74, 144, 226, 0.2);
+			--primary-color-shadow-medium: rgba(74, 144, 226, 0.4);
 			--font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			--font-heading: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-			/* Spacing */
 			--spacing-unit: 8px;
-			--padding-sm: calc(2 * var(--spacing-unit)); /* 16px */
-			--padding-md: calc(3 * var(--spacing-unit)); /* 24px */
-			--padding-lg: calc(5 * var(--spacing-unit)); /* 40px */
-
-			/* Border Radius */
+			--padding-sm: calc(2 * var(--spacing-unit));
+			--padding-md: calc(3 * var(--spacing-unit));
+			--padding-lg: calc(5 * var(--spacing-unit));
 			--border-radius-sm: 6px;
 			--border-radius-md: 10px;
-			--border-radius-lg: 18px; /* For containers */
-
-			/* Transitions */
+			--border-radius-lg: 18px;
 			--transition-ease: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 		}
 
-		/* Base Styles */
 		* {
 			box-sizing: border-box;
 		}
@@ -60,31 +47,29 @@
 			color: var(--text-light);
 			display: flex;
 			justify-content: center;
-			align-items: flex-start; /* Align to top for better content flow */
+			align-items: flex-start;
 		}
 
-		/* Container */
 		.container {
 			max-width: 1200px;
-			width: 95%; /* Adjust for smaller screens */
+			width: 95%;
 			margin: 0 auto;
 			background: var(--surface-white);
 			border-radius: var(--border-radius-lg);
 			padding: var(--padding-lg);
 			box-shadow: 0 15px 35px var(--shadow-medium);
-			overflow: hidden; /* Ensures no content spills out of rounded corners */
+			overflow: hidden;
 		}
 
-		/* Headings */
 		h3 {
 			font-family: var(--font-heading);
 			color: var(--text-dark);
-			font-size: 2.2rem; /* Slightly adjusted for balance */
+			font-size: 2.2rem;
 			font-weight: 700;
 			margin-bottom: var(--padding-md);
 			text-align: center;
 			position: relative;
-			padding-bottom: var(--padding-sm); /* Space for the underline */
+			padding-bottom: var(--padding-sm);
 		}
 
 		h3::after {
@@ -93,13 +78,12 @@
 			bottom: 0;
 			left: 50%;
 			transform: translateX(-50%);
-			width: 70px; /* Slightly narrower for subtlety */
-			height: 3px; /* Thinner line */
+			width: 70px;
+			height: 3px;
 			background: var(--primary-color);
 			border-radius: 2px;
 		}
 
-		/* Horizontal Rule */
 		hr {
 			border: none;
 			height: 1px;
@@ -107,7 +91,6 @@
 			margin: var(--padding-lg) 0;
 		}
 
-		/* Buttons */
 		.btn {
 			font-family: var(--font-body);
 			font-weight: 600;
@@ -116,11 +99,11 @@
 			border: none;
 			cursor: pointer;
 			text-decoration: none;
-			display: inline-flex; /* Use flexbox for vertical alignment */
+			display: inline-flex;
 			align-items: center;
 			justify-content: center;
 			text-align: center;
-			gap: 5px; /* Space between text and icon if any */
+			gap: 5px;
 		}
 
 		.btn-primary {
@@ -129,41 +112,40 @@
 			padding: 12px 28px;
 			font-size: 1rem;
 			margin-bottom: var(--padding-md);
-			box-shadow: 0 5px 15px var(--primary-color-shadow-light); /* Refined shadow */
+			box-shadow: 0 5px 15px var(--primary-color-shadow-light);
 		}
 
 		.btn-primary:hover {
 			background: var(--primary-dark);
 			transform: translateY(-2px);
 			box-shadow: 0 8px 20px var(--primary-color-shadow-medium);
-			color: white; /* Ensure color remains white */
+			color: white;
 			text-decoration: none;
 		}
 
-		/* Table Container */
 		.table-container {
 			background: var(--surface-white);
 			border-radius: var(--border-radius-md);
 			overflow: hidden;
 			box-shadow: 0 8px 25px var(--shadow-light);
-			border: 1px solid var(--border-color); /* Subtle border for definition */
+			border: 1px solid var(--border-color);
 		}
 
 		.table {
 			width: 100%;
-			border-collapse: collapse; /* Ensure borders collapse nicely */
+			border-collapse: collapse;
 			margin: 0;
 		}
 
 		.table thead th {
-			background: var(--text-dark); /* Darker header for contrast */
+			background: var(--text-dark);
 			color: white;
 			padding: var(--padding-md) var(--padding-sm);
 			font-weight: 600;
 			text-transform: uppercase;
-			letter-spacing: 0.8px; /* Slightly more prominent */
+			letter-spacing: 0.8px;
 			font-size: 0.85rem;
-			text-align: left; /* Align text left in headers */
+			text-align: left;
 		}
 
 		.table tbody td {
@@ -179,18 +161,17 @@
 		}
 
 		.table tbody tr:hover {
-			background: var(--background-light); /* Softer hover background */
-			transform: none; /* Removed scale for a less jarring effect */
-			box-shadow: inset 3px 0 0 0 var(--primary-color); /* Subtle left border on hover */
+			background: var(--background-light);
+			transform: none;
+			box-shadow: inset 3px 0 0 0 var(--primary-color);
 		}
 
 		.table tbody tr:last-child td {
 			border-bottom: none;
 		}
 
-		/* Action Buttons within Table */
 		.btn-info {
-			background: #17a2b8; /* Bootstrap info blue */
+			background: #17a2b8;
 			color: white;
 			padding: 8px 16px;
 			font-size: 0.85rem;
@@ -205,7 +186,7 @@
 		}
 
 		.btn-danger {
-			background: #dc3545; /* Bootstrap danger red */
+			background: #dc3545;
 			color: white;
 			padding: 8px 16px;
 			font-size: 0.85rem;
@@ -226,15 +207,14 @@
 		.action-buttons {
 			display: flex;
 			gap: var(--spacing-unit);
-			justify-content: flex-start; /* Align action buttons to the left */
+			justify-content: flex-start;
 		}
 
 		.action-buttons form {
 			margin: 0;
-			display: inline-block; /* Ensure forms behave well within flex */
+			display: inline-block;
 		}
 
-		/* Responsive Adjustments */
 		@media (max-width: 768px) {
 			body {
 				padding: var(--padding-md) 0;
@@ -258,7 +238,7 @@
 
 			.table-container {
 				overflow-x: auto;
-				-webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+				-webkit-overflow-scrolling: touch;
 			}
 
 			.table thead th,
@@ -280,20 +260,18 @@
 			}
 
 			.action-buttons {
-				flex-direction: row; /* Keep row for small screens if space permits, or wrap */
+				flex-direction: row;
 				flex-wrap: wrap;
 				gap: 5px;
 				justify-content: center;
 			}
 		}
 
-		/* Accessibility and Usability */
 		.btn:focus-visible {
 			outline: 2px solid var(--primary-color);
 			outline-offset: 2px;
 		}
 
-		/* Custom scrollbar for table container */
 		.table-container::-webkit-scrollbar {
 			height: 6px;
 		}
