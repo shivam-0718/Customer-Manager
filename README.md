@@ -12,24 +12,25 @@ This application provides a clean, modern web interface for adding, viewing, upd
 - **Confirmation Dialogs**: Safe deletion with user confirmation
 - **Responsive Design**: Mobile-friendly interface
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-| Category | Technology | Description |
-|----------|------------|-------------|
-| **Backend** | Java 17+ | Core programming language |
-| | Spring Boot 3.x | Application framework |
-| | Spring MVC | Web layer |
-| | Spring Data JPA | Data access layer |
-| | Hibernate | ORM framework |
-| | Jakarta Persistence API | JPA implementation |
-| **Frontend** | Thymeleaf | Server-side templating engine |
-| | HTML5 & CSS3 | Modern web standards |
-| | Responsive Design | Mobile-first approach |
-| **Database** | MySQL | Production database support |
-| **Tools & Libraries** | Lombok | Reducing boilerplate code |
-| | Maven | Dependency management and build tool |
-| | Spring Boot DevTools | Development productivity |
+This project leverages a robust set of technologies across different layers to ensure scalability, maintainability, and a seamless user experience.
 
+| Category                | Technology                    | Description                          |
+|-------------------------|-------------------------------|--------------------------------------|
+| **Backend** | Java 17+                      | Core programming language            |
+|                         | Spring Boot 3.x               | Opinionated application framework    |
+|                         | Spring MVC                    | Robust web layer framework           |
+|                         | Spring Data JPA               | Simplified data access layer         |
+|                         | Hibernate                     | Powerful ORM framework               |
+|                         | Jakarta Persistence API (JPA) | Standard for object-relational mapping |
+| **Frontend** | Thymeleaf                     | Server-side templating engine        |
+|                         | HTML5 & CSS3                  | Modern web standards for structure and styling |
+|                         | Responsive Design             | Mobile-first approach for all devices |
+| **Database** | MySQL                         | Production-ready relational database |
+| **Tools & Libraries** | Lombok                        | Reduces boilerplate code (e.g., getters/setters) |
+|                         | Maven                         | Project dependency management and build automation |
+|                         | Spring Boot DevTools          | Enhances development productivity and hot-reloading |
 ## 📋 Prerequisites
 
 | Requirement | Version/Details |
