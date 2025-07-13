@@ -7,31 +7,75 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<style>
+		:root {
+			/* Color Palette */
+			--primary-color: #4a90e2; /* A modern blue */
+			--primary-dark: #3a7bd5;
+			--secondary-color: #50e3c2; /* A vibrant accent */
+			--text-dark: #333;
+			--text-light: #555;
+			--background-light: #f5f7fa;
+			--surface-white: #ffffff;
+			--border-color: #e0e6ed;
+			--input-border: #dbe3eb; /* Slightly lighter border for inputs */
+			--input-placeholder: #95a5a6;
+			--shadow-light: rgba(0, 0, 0, 0.08);
+			--shadow-medium: rgba(0, 0, 0, 0.12);
+			--shadow-heavy: rgba(0, 0, 0, 0.18); /* For more pronounced shadows */
+			--primary-color-shadow-light: rgba(74, 144, 226, 0.2);
+			--primary-color-shadow-medium: rgba(74, 144, 226, 0.4);
+			--primary-color-shadow-heavy: rgba(74, 144, 226, 0.6);
+
+			/* Typography */
+			--font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			--font-heading: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+			/* Spacing */
+			--spacing-unit: 8px;
+			--padding-sm: calc(2 * var(--spacing-unit)); /* 16px */
+			--padding-md: calc(3 * var(--spacing-unit)); /* 24px */
+			--padding-lg: calc(5 * var(--spacing-unit)); /* 40px */
+			--padding-xl: calc(6 * var(--spacing-unit)); /* 48px */
+
+			/* Border Radius */
+			--border-radius-sm: 6px;
+			--border-radius-md: 10px;
+			--border-radius-lg: 18px; /* For containers */
+			--border-radius-input: 8px; /* Slightly less rounded for inputs */
+
+			/* Transitions */
+			--transition-ease: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+			--transition-fast: all 0.2s ease-out;
+		}
+
+		/* Base Styles */
 		* {
 			box-sizing: border-box;
 		}
 
 		body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			font-family: var(--font-body);
+			background: var(--background-light); /* Consistent with table component */
 			min-height: 100vh;
 			margin: 0;
-			padding: 20px;
+			padding: var(--padding-md); /* Consistent padding */
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			color: var(--text-light);
 		}
 
+		/* Container */
 		.container {
-			max-width: 600px;
+			max-width: 550px; /* Slightly adjusted max-width for forms */
 			width: 100%;
-			background: rgba(255,255,255,0.95);
-			border-radius: 20px;
-			padding: 50px;
-			box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-			backdrop-filter: blur(10px);
+			background: var(--surface-white);
+			border-radius: var(--border-radius-lg);
+			padding: var(--padding-xl); /* Generous padding for form */
+			box-shadow: 0 15px 35px var(--shadow-medium);
 			position: relative;
 			overflow: hidden;
+			border: 1px solid var(--border-color); /* Subtle border for definition */
 		}
 
 		.container::before {
@@ -40,10 +84,10 @@
 			top: 0;
 			left: 0;
 			right: 0;
-			height: 5px;
-			background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+			height: 4px; /* Thinner line */
+			background: linear-gradient(90deg, var(--primary-color), var(--primary-dark), var(--primary-color));
 			background-size: 200% 100%;
-			animation: shimmer 3s infinite;
+			animation: shimmer 3s infinite linear; /* Added linear for smoother shimmer */
 		}
 
 		@keyframes shimmer {
@@ -51,105 +95,125 @@
 			100% { background-position: -200% 0; }
 		}
 
+		/* Headings */
 		h3 {
-			color: #2c3e50;
-			font-size: 2.5rem;
+			font-family: var(--font-heading);
+			color: var(--text-dark);
+			font-size: 2.2rem;
 			font-weight: 700;
-			margin-bottom: 10px;
+			margin-bottom: var(--padding-md);
 			text-align: center;
 			position: relative;
+			padding-bottom: var(--padding-sm);
 		}
 
 		h3::after {
 			content: '';
 			position: absolute;
-			bottom: -10px;
+			bottom: 0; /* Aligned with previous component */
 			left: 50%;
 			transform: translateX(-50%);
-			width: 80px;
-			height: 4px;
-			background: linear-gradient(135deg, #667eea, #764ba2);
+			width: 70px;
+			height: 3px;
+			background: var(--primary-color);
 			border-radius: 2px;
 		}
 
 		hr {
 			border: none;
 			height: 1px;
-			background: linear-gradient(90deg, transparent, #ddd, transparent);
-			margin: 30px 0;
+			background: var(--border-color);
+			margin: var(--padding-lg) 0;
 		}
 
 		.h4 {
-			color: #34495e;
+			font-family: var(--font-body); /* Use body font for sub-headings */
+			color: var(--text-dark); /* Darker color for emphasis */
 			font-weight: 600;
-			margin-bottom: 30px;
+			margin-bottom: var(--padding-lg); /* More space below sub-heading */
 			text-align: center;
-			font-size: 1.3rem;
-			opacity: 0.8;
+			font-size: 1.15rem; /* Slightly smaller for better hierarchy */
+			opacity: 0.9; /* Increased opacity */
+			line-height: 1.4;
 		}
 
+		/* Form Elements */
 		.form-group {
 			position: relative;
-			margin-bottom: 30px;
+			margin-bottom: var(--padding-lg); /* Consistent spacing for form elements */
 		}
 
 		.form-control {
 			width: 100%;
-			padding: 16px 20px;
-			border: 2px solid #e9ecef;
-			border-radius: 12px;
-			font-size: 16px;
-			background: rgba(255,255,255,0.9);
-			transition: all 0.3s ease;
+			padding: 14px var(--padding-sm); /* Slightly reduced padding */
+			border: 1px solid var(--input-border); /* Softer border */
+			border-radius: var(--border-radius-input);
+			font-size: 1rem; /* Consistent font size */
+			background: var(--surface-white);
+			transition: var(--transition-ease);
 			outline: none;
-			color: #2c3e50;
+			color: var(--text-dark);
 		}
 
 		.form-control:focus {
-			border-color: #667eea;
-			box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-			background: white;
-			transform: translateY(-2px);
+			border-color: var(--primary-color);
+			box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15); /* Softer focus shadow */
+			background: var(--surface-white);
+			transform: none; /* Removed translateY for focus, can be distracting */
 		}
 
 		.form-control::placeholder {
-			color: #95a5a6;
+			color: var(--input-placeholder);
 			font-weight: 400;
 		}
 
 		/* Floating label effect */
 		.form-group label {
 			position: absolute;
-			top: 16px;
-			left: 20px;
-			color: #95a5a6;
-			font-size: 16px;
-			transition: all 0.3s ease;
+			top: 14px; /* Adjust to match form-control padding */
+			left: var(--padding-sm);
+			color: var(--input-placeholder);
+			font-size: 1rem;
+			transition: var(--transition-fast); /* Faster transition for snappier feel */
 			pointer-events: none;
-			background: white;
-			padding: 0 5px;
+			background: transparent; /* Initially transparent */
+			padding: 0 3px; /* Smaller padding */
+			transform-origin: left; /* Scale from left */
 		}
 
 		.form-control:focus + label,
 		.form-control:not(:placeholder-shown) + label {
-			top: -8px;
-			left: 15px;
-			font-size: 12px;
-			color: #667eea;
+			top: -10px; /* Moves up more */
+			left: var(--spacing-unit); /* Slightly in from left */
+			font-size: 0.8rem; /* Smaller font size */
+			color: var(--primary-color);
 			font-weight: 600;
+			background: var(--surface-white); /* White background when active */
+			padding: 0 5px; /* Padding for background effect */
 		}
 
+		.form-control:not(:placeholder-shown) {
+			border-color: var(--border-color); /* Keep border clear if value exists */
+		}
+
+
+		/* Buttons */
 		.btn {
+			font-family: var(--font-body);
 			font-weight: 600;
-			border-radius: 12px;
-			transition: all 0.3s ease;
+			border-radius: var(--border-radius-md); /* Consistent button radius */
+			transition: var(--transition-ease);
 			border: none;
 			cursor: pointer;
 			text-decoration: none;
-			display: inline-block;
+			display: inline-flex; /* Consistent with previous component */
+			align-items: center;
+			justify-content: center;
 			text-align: center;
 			position: relative;
 			overflow: hidden;
+			padding: 14px 30px; /* Consistent padding */
+			font-size: 1rem;
 		}
 
 		.btn::before {
@@ -159,56 +223,51 @@
 			left: -100%;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-			transition: left 0.5s;
+			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); /* Softer shimmer */
+			transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
 		}
 
 		.btn:hover::before {
 			left: 100%;
 		}
 
-		.btn-info {
-			background: linear-gradient(135deg, #667eea, #764ba2);
+		.btn-submit { /* Renamed from btn-info for clarity in a form context */
+			background: var(--primary-color);
 			color: white;
-			padding: 16px 40px;
-			font-size: 16px;
 			width: 100%;
-			margin-top: 20px;
-			box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+			margin-top: var(--padding-md); /* Consistent margin */
+			box-shadow: 0 5px 15px var(--primary-color-shadow-light); /* Consistent shadow */
 		}
 
-		.btn-info:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+		.btn-submit:hover {
+			background: var(--primary-dark);
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px var(--primary-color-shadow-medium);
 			color: white;
 		}
 
-		.btn-info:active {
-			transform: translateY(-1px);
-			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+		.btn-submit:active {
+			transform: translateY(0); /* Less aggressive active state */
+			box-shadow: 0 2px 8px var(--primary-color-shadow-light);
 		}
 
 		/* Form animation */
 		form {
-			animation: slideUp 0.6s ease-out;
+			animation: fadeInScale 0.6s ease-out forwards; /* Changed animation for a more modern feel */
 		}
 
-		@keyframes slideUp {
+		@keyframes fadeInScale {
 			from {
 				opacity: 0;
-				transform: translateY(30px);
+				transform: scale(0.98);
 			}
 			to {
 				opacity: 1;
-				transform: translateY(0);
+				transform: scale(1);
 			}
 		}
 
-		/* Input focus animation */
-		.form-control {
-			position: relative;
-		}
-
+		/* Input focus animation (bottom line) */
 		.form-group::after {
 			content: '';
 			position: absolute;
@@ -216,8 +275,8 @@
 			left: 0;
 			width: 0;
 			height: 2px;
-			background: linear-gradient(135deg, #667eea, #764ba2);
-			transition: width 0.3s ease;
+			background: var(--primary-color); /* Solid primary color line */
+			transition: width 0.3s var(--transition-ease);
 		}
 
 		.form-group:focus-within::after {
@@ -227,34 +286,61 @@
 		/* Responsive design */
 		@media (max-width: 768px) {
 			.container {
-				margin: 10px;
-				padding: 30px 25px;
+				margin: var(--spacing-unit);
+				padding: var(--padding-lg) var(--padding-md); /* Reduced padding for mobile */
 			}
 
 			h3 {
-				font-size: 2rem;
+				font-size: 1.8rem;
+				margin-bottom: var(--padding-sm);
+			}
+
+			h3::after {
+				bottom: -5px;
+				width: 50px;
+				height: 2px;
+			}
+
+			.h4 {
+				font-size: 1rem;
+				margin-bottom: var(--padding-md);
 			}
 
 			.form-control {
-				padding: 14px 16px;
-				font-size: 15px;
+				padding: 12px var(--spacing-unit);
+				font-size: 0.9rem;
 			}
 
-			.btn-info {
-				padding: 14px 30px;
-				font-size: 15px;
+			.form-group label {
+				top: 12px;
+				font-size: 0.9rem;
+				left: var(--spacing-unit);
+			}
+
+			.form-control:focus + label,
+			.form-control:not(:placeholder-shown) + label {
+				top: -8px;
+				font-size: 0.7rem;
+				left: var(--spacing-unit);
+			}
+
+			.btn-submit {
+				padding: 12px 25px;
+				font-size: 0.9rem;
 			}
 		}
 
 		/* Success state for form completion */
 		.form-success {
-			background: linear-gradient(135deg, #2ecc71, #27ae60);
+			background: #28a745; /* Standard success green */
 			color: white;
-			padding: 15px;
-			border-radius: 10px;
-			margin-bottom: 20px;
+			padding: var(--padding-sm);
+			border-radius: var(--border-radius-md);
+			margin-bottom: var(--padding-md);
 			text-align: center;
-			display: none;
+			display: none; /* Keep hidden by default */
+			font-weight: 500;
+			box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2);
 		}
 	</style>
 
