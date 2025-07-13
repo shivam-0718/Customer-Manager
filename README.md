@@ -75,7 +75,7 @@ This application provides a clean, modern web interface for adding, viewing, upd
 Open your browser and navigate to:
 ```
 http://localhost:8080/customer-info
-
+```
 ## 📁 Project Structure
 
 ```
