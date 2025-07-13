@@ -8,220 +8,308 @@
 		  content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<style>
+		:root {
+			/* Color Palette */
+			--primary-color: #4a90e2; /* A modern blue */
+			--primary-dark: #3a7bd5;
+			--secondary-color: #50e3c2; /* A vibrant accent */
+			--text-dark: #333;
+			--text-light: #555;
+			--background-light: #f5f7fa;
+			--surface-white: #ffffff;
+			--border-color: #e0e6ed;
+			--shadow-light: rgba(0, 0, 0, 0.08);
+			--shadow-medium: rgba(0, 0, 0, 0.12);
+
+			/* --- ADDED THESE MISSING VARIABLES --- */
+			--primary-color-shadow-light: rgba(74, 144, 226, 0.2); /* Shadow based on primary-color */
+			--primary-color-shadow-medium: rgba(74, 144, 226, 0.4); /* Stronger shadow based on primary-color */
+			/* ------------------------------------ */
+
+			/* Typography */
+			--font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			--font-heading: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+			/* Spacing */
+			--spacing-unit: 8px;
+			--padding-sm: calc(2 * var(--spacing-unit)); /* 16px */
+			--padding-md: calc(3 * var(--spacing-unit)); /* 24px */
+			--padding-lg: calc(5 * var(--spacing-unit)); /* 40px */
+
+			/* Border Radius */
+			--border-radius-sm: 6px;
+			--border-radius-md: 10px;
+			--border-radius-lg: 18px; /* For containers */
+
+			/* Transitions */
+			--transition-ease: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		}
+
+		/* Base Styles */
 		* {
 			box-sizing: border-box;
 		}
 
 		body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			font-family: var(--font-body);
+			background: var(--background-light);
 			min-height: 100vh;
 			margin: 0;
-			padding: 20px 0;
+			padding: var(--padding-lg) 0;
+			line-height: 1.6;
+			color: var(--text-light);
+			display: flex;
+			justify-content: center;
+			align-items: flex-start; /* Align to top for better content flow */
 		}
 
+		/* Container */
 		.container {
 			max-width: 1200px;
+			width: 95%; /* Adjust for smaller screens */
 			margin: 0 auto;
-			background: rgba(255,255,255,0.95);
-			border-radius: 15px;
-			padding: 40px;
-			box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-			backdrop-filter: blur(10px);
+			background: var(--surface-white);
+			border-radius: var(--border-radius-lg);
+			padding: var(--padding-lg);
+			box-shadow: 0 15px 35px var(--shadow-medium);
+			overflow: hidden; /* Ensures no content spills out of rounded corners */
 		}
 
+		/* Headings */
 		h3 {
-			color: #2c3e50;
-			font-size: 2.5rem;
+			font-family: var(--font-heading);
+			color: var(--text-dark);
+			font-size: 2.2rem; /* Slightly adjusted for balance */
 			font-weight: 700;
-			margin-bottom: 10px;
+			margin-bottom: var(--padding-md);
 			text-align: center;
 			position: relative;
+			padding-bottom: var(--padding-sm); /* Space for the underline */
 		}
 
 		h3::after {
 			content: '';
 			position: absolute;
-			bottom: -10px;
+			bottom: 0;
 			left: 50%;
 			transform: translateX(-50%);
-			width: 80px;
-			height: 4px;
-			background: linear-gradient(135deg, #667eea, #764ba2);
+			width: 70px; /* Slightly narrower for subtlety */
+			height: 3px; /* Thinner line */
+			background: var(--primary-color);
 			border-radius: 2px;
 		}
 
+		/* Horizontal Rule */
 		hr {
 			border: none;
 			height: 1px;
-			background: linear-gradient(90deg, transparent, #ddd, transparent);
-			margin: 30px 0;
+			background: var(--border-color);
+			margin: var(--padding-lg) 0;
 		}
 
+		/* Buttons */
 		.btn {
+			font-family: var(--font-body);
 			font-weight: 600;
-			border-radius: 8px;
-			transition: all 0.3s ease;
+			border-radius: var(--border-radius-sm);
+			transition: var(--transition-ease);
 			border: none;
 			cursor: pointer;
 			text-decoration: none;
-			display: inline-block;
+			display: inline-flex; /* Use flexbox for vertical alignment */
+			align-items: center;
+			justify-content: center;
 			text-align: center;
+			gap: 5px; /* Space between text and icon if any */
 		}
 
 		.btn-primary {
-			background: linear-gradient(135deg, #667eea, #764ba2);
+			background: var(--primary-color);
 			color: white;
-			padding: 12px 30px;
-			font-size: 16px;
-			margin-bottom: 25px;
-			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+			padding: 12px 28px;
+			font-size: 1rem;
+			margin-bottom: var(--padding-md);
+			box-shadow: 0 5px 15px var(--primary-color-shadow-light); /* Refined shadow */
 		}
 
 		.btn-primary:hover {
+			background: var(--primary-dark);
 			transform: translateY(-2px);
-			box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-			color: white;
+			box-shadow: 0 8px 20px var(--primary-color-shadow-medium);
+			color: white; /* Ensure color remains white */
 			text-decoration: none;
 		}
 
+		/* Table Container */
 		.table-container {
-			background: white;
-			border-radius: 12px;
+			background: var(--surface-white);
+			border-radius: var(--border-radius-md);
 			overflow: hidden;
-			box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+			box-shadow: 0 8px 25px var(--shadow-light);
+			border: 1px solid var(--border-color); /* Subtle border for definition */
 		}
 
 		.table {
+			width: 100%;
+			border-collapse: collapse; /* Ensure borders collapse nicely */
 			margin: 0;
-			background: white;
 		}
 
 		.table thead th {
-			background: linear-gradient(135deg, #2c3e50, #34495e);
+			background: var(--text-dark); /* Darker header for contrast */
 			color: white;
-			border: none;
-			padding: 20px 15px;
+			padding: var(--padding-md) var(--padding-sm);
 			font-weight: 600;
 			text-transform: uppercase;
-			letter-spacing: 0.5px;
-			font-size: 14px;
+			letter-spacing: 0.8px; /* Slightly more prominent */
+			font-size: 0.85rem;
+			text-align: left; /* Align text left in headers */
 		}
 
 		.table tbody td {
-			padding: 18px 15px;
-			border-bottom: 1px solid #f1f3f4;
+			padding: var(--padding-sm) var(--padding-sm);
+			border-bottom: 1px solid var(--border-color);
 			vertical-align: middle;
-			font-size: 15px;
-			color: #2c3e50;
+			font-size: 0.95rem;
+			color: var(--text-light);
 		}
 
 		.table tbody tr {
-			transition: all 0.3s ease;
+			transition: var(--transition-ease);
 		}
 
 		.table tbody tr:hover {
-			background: linear-gradient(135deg, #f8f9ff, #f1f3ff);
-			transform: scale(1.01);
+			background: var(--background-light); /* Softer hover background */
+			transform: none; /* Removed scale for a less jarring effect */
+			box-shadow: inset 3px 0 0 0 var(--primary-color); /* Subtle left border on hover */
 		}
 
 		.table tbody tr:last-child td {
 			border-bottom: none;
 		}
 
+		/* Action Buttons within Table */
 		.btn-info {
-			background: linear-gradient(135deg, #17a2b8, #138496);
+			background: #17a2b8; /* Bootstrap info blue */
 			color: white;
 			padding: 8px 16px;
-			font-size: 13px;
+			font-size: 0.85rem;
 			margin-right: 8px;
-			box-shadow: 0 3px 10px rgba(23, 162, 184, 0.3);
+			box-shadow: 0 2px 8px rgba(23, 162, 184, 0.2);
 		}
 
 		.btn-info:hover {
-			background: linear-gradient(135deg, #138496, #0f6674);
+			background: #138496;
 			transform: translateY(-1px);
-			box-shadow: 0 5px 15px rgba(23, 162, 184, 0.5);
-			color: white;
+			box-shadow: 0 4px 12px rgba(23, 162, 184, 0.4);
 		}
 
 		.btn-danger {
-			background: linear-gradient(135deg, #dc3545, #c82333);
+			background: #dc3545; /* Bootstrap danger red */
 			color: white;
 			padding: 8px 16px;
-			font-size: 13px;
-			box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
+			font-size: 0.85rem;
+			box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
 		}
 
 		.btn-danger:hover {
-			background: linear-gradient(135deg, #c82333, #a71e2a);
+			background: #c82333;
 			transform: translateY(-1px);
-			box-shadow: 0 5px 15px rgba(220, 53, 69, 0.5);
-			color: white;
+			box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
 		}
 
 		.btn-sm {
-			font-size: 13px;
-			padding: 8px 16px;
+			font-size: 0.8rem;
+			padding: 6px 12px;
 		}
 
 		.action-buttons {
 			display: flex;
-			gap: 8px;
-			justify-content: center;
+			gap: var(--spacing-unit);
+			justify-content: flex-start; /* Align action buttons to the left */
 		}
 
 		.action-buttons form {
 			margin: 0;
+			display: inline-block; /* Ensure forms behave well within flex */
 		}
 
+		/* Responsive Adjustments */
 		@media (max-width: 768px) {
+			body {
+				padding: var(--padding-md) 0;
+			}
+
 			.container {
-				margin: 10px;
-				padding: 20px;
+				margin: var(--spacing-unit);
+				padding: var(--padding-md);
 			}
 
 			h3 {
-				font-size: 2rem;
+				font-size: 1.8rem;
+				margin-bottom: var(--padding-sm);
+			}
+
+			h3::after {
+				bottom: -5px;
+				width: 50px;
+				height: 2px;
 			}
 
 			.table-container {
 				overflow-x: auto;
+				-webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+			}
+
+			.table thead th,
+			.table tbody td {
+				padding: var(--spacing-unit) var(--spacing-unit);
+				font-size: 0.8rem;
+			}
+
+			.btn-primary {
+				padding: 10px 20px;
+				font-size: 0.9rem;
+				margin-bottom: var(--padding-sm);
+			}
+
+			.btn-info, .btn-danger, .btn-sm {
+				padding: 6px 10px;
+				font-size: 0.75rem;
+				margin-right: 5px;
 			}
 
 			.action-buttons {
-				flex-direction: column;
+				flex-direction: row; /* Keep row for small screens if space permits, or wrap */
+				flex-wrap: wrap;
 				gap: 5px;
-			}
-
-			.btn-sm {
-				font-size: 12px;
-				padding: 6px 12px;
+				justify-content: center;
 			}
 		}
 
-		/* Loading animation for buttons */
-		.btn:active {
-			transform: scale(0.98);
+		/* Accessibility and Usability */
+		.btn:focus-visible {
+			outline: 2px solid var(--primary-color);
+			outline-offset: 2px;
 		}
 
 		/* Custom scrollbar for table container */
 		.table-container::-webkit-scrollbar {
-			height: 8px;
+			height: 6px;
 		}
 
 		.table-container::-webkit-scrollbar-track {
 			background: #f1f1f1;
-			border-radius: 4px;
+			border-radius: 3px;
 		}
 
 		.table-container::-webkit-scrollbar-thumb {
-			background: linear-gradient(135deg, #667eea, #764ba2);
-			border-radius: 4px;
+			background: var(--primary-color);
+			border-radius: 3px;
 		}
 
 		.table-container::-webkit-scrollbar-thumb:hover {
-			background: linear-gradient(135deg, #5a67d8, #6b46c1);
+			background: var(--primary-dark);
 		}
 	</style>
 
