@@ -238,7 +238,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you encounter any issues or have questions, please:
-1. Check the [Issues](https://github.com/yourusername/customer-manager/issues) section
+1. Check the [Issues](https://github.com/shivam-0718/Customer-Manager/issues) section
 2. Create a new issue if your problem isn't already reported
 3. Provide detailed information about your environment and the issue
 
